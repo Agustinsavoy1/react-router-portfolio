@@ -12,6 +12,7 @@ const Work = () => {
       .then(
         (data) => {
           console.log(data);
+          
           setDemo(data);
         },
         (error) => {
@@ -32,7 +33,7 @@ const Work = () => {
         }
       );
 
-      
+      console.log()
   }, []);
 
   
@@ -59,8 +60,8 @@ const Work = () => {
                   <span className="text-2xl font-bold text-white tracking-wider text-justify">
                     {repo.name}
                   </span>
-                  <div className="pt-8 text-center">
-                    <a target="_blank" href={`https://${demo.name}.herokuapp.com`} rel="noreferrer">
+                  <div className="pt-8 text-center"> 
+                    <a target="_blank" href={`https://${repo.name}.herokuapp.com`} rel="noreferrer">
                       <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
                         Demo
                       </button>
