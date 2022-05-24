@@ -7,7 +7,7 @@ const Work = () => {
   const [repoList, setRepoList] = useState([]);
 
   useEffect(() => {
-    fetch("http://api.github.com/users/agustinsavoy1")
+    fetch("https://api.github.com/users/agustinsavoy1")
       .then((response) => response.json())
       .then(
         (data) => {
@@ -19,7 +19,7 @@ const Work = () => {
         }
       );
 
-      fetch("http://api.github.com/users/agustinsavoy1/repos")
+      fetch("https://api.github.com/users/agustinsavoy1/repos")
       .then((response) => response.json())
       .then(
         (data) => {
