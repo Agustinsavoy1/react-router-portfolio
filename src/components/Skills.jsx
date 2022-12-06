@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import HTML from "../assets/html.png";
 import CSS from "../assets/css.png";
@@ -9,8 +9,6 @@ import Tailwind from "../assets/tailwind.png";
 import Booststrap from "../assets/bootstrap.png";
 
 const Skills = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <div name="skills" className="w-full h-screen bg-[#0a192f] text-gray-300">
       {/* Container */}
