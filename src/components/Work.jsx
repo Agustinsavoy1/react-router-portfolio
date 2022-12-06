@@ -1,58 +1,69 @@
 import React, { useEffect, useState } from "react";
-import WorkImg from "../assets/workImg.jpeg";
-// import realEstate from "../assets/realestate.jpg";
+import RepoImg from "../assets/javascript.png";
+import { motion } from "framer-motion";
 
 const Work = () => {
-  const [demo, setDemo] = useState([]);
   const [repoList, setRepoList] = useState([]);
 
+  const fetchRepos = async () => {
+    await fetch("https://api.github.com/users/agustinsavoy1/repos")
+      .then((response) => response.json())
+      .then(
+        (data) => {
+          console.log(data, "repos");
+          setRepoList(data);
+        },
+        (error) => {
+          console.log(error, "fetcheala");
+        }
+      );
+  };
+
   useEffect(() => {
-    fetch("https://api.github.com/users/agustinsavoy1")
-      .then((response) => response.json())
-      .then(
-        (data) => {
-          console.log(data);
-          
-          setDemo(data);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-
-      fetch("https://api.github.com/users/agustinsavoy1/repos")
-      .then((response) => response.json())
-      .then(
-        (data) => {
-          console.log(data);
-          
-          setRepoList(data)
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-
-      console.log()
+    fetchRepos();
   }, []);
 
-  
+  //https://hackernoon.com/how-to-fetch-large-data-files-through-github-api
+
   return (
     <div name="work" className="w-full md:h-screen text-gray-300 bg-[#0a192f]">
-      <div className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full"
+      >
         <div className="pb-8">
-          <p className="text-4xl font-bold inline border-b-4 text-gray-300 border-pink-600">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="text-4xl font-bold inline border-b-4 text-gray-300 border-pink-600"
+          >
             Work
-          </p>
-          <p className="py-6">// Check out some of my recent work</p>
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
+            className="py-6"
+          >
+            Check out some of my recent work
+          </motion.p>
         </div>
         {/* Container */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 ">
           {/* Grid Item */}
-              {repoList.slice(0,6).map((repo) => {
-                return (
-                <div key={repo.id}
-                style={{ backgroundImage: `url(${WorkImg})` }}
+          {repoList.slice(0, 6).map((repo) => {
+            return (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 2 }}
+                key={repo.id}
+                style={{
+                  backgroundImage: `url(${RepoImg})`,
+                }}
                 className="shadow-lg shadow-[#040c16] group container rounded-md flex justify-center items-center mx-auto content-div"
               >
                 {/* Hover Effects */}
@@ -60,22 +71,28 @@ const Work = () => {
                   <span className="text-2xl font-bold text-white tracking-wider text-justify">
                     {repo.name}
                   </span>
-                  <div className="pt-8 text-center"> 
-                    <a target="_blank" href={`https://${repo.name}.herokuapp.com`} rel="noreferrer">
+                  <div className="pt-8 text-center">
+                    <a
+                      target="_blank"
+                      href={`https://${repo.name}.herokuapp.com`}
+                      rel="noreferrer"
+                    >
                       <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
                         Demo
                       </button>
                     </a>
-                    <a target='_blank' rel="noreferrer" href={repo.html_url}>
+                    <a target="_blank" rel="noreferrer" href={repo.html_url}>
                       <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
                         Code
                       </button>
                     </a>
                   </div>
                 </div>
-              </div>)})}
+              </motion.div>
+            );
+          })}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
