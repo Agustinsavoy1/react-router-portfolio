@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import RepoImg from "../assets/javascript.png";
+import RepoImg from "../assets/giphy.webp";
 import { motion } from "framer-motion";
 
 const Work = () => {
@@ -72,7 +72,7 @@ const Work = () => {
                     {repo.name}
                   </span>
                   <div className="pt-8 text-center">
-                    <a
+                    {/* <a
                       target="_blank"
                       href={`https://${repo.name}.herokuapp.com`}
                       rel="noreferrer"
@@ -80,7 +80,7 @@ const Work = () => {
                       <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
                         Demo
                       </button>
-                    </a>
+                    </a> */}
                     <a target="_blank" rel="noreferrer" href={repo.html_url}>
                       <button className="text-center rounded-lg px-4 py-3 m-2 bg-white text-gray-700 font-bold text-lg">
                         Code
